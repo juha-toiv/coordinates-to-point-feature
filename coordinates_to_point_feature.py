@@ -40,5 +40,6 @@ if __name__ == '__main__':
         make_feature_lyr_output = arcpy.MakeFeatureLayer_management(output_fc_path, output_fc)
         mem_lyr = make_feature_lyr_output.getOutput(0)
         aprx_map.addLayer(mem_lyr)
+        arcpy.management.Delete("memory/" + tmp_tbl)
     except Exception as e:
         raise CoordinatesToPointException("Error adding output feature layer to map - no active map; " + str(e))
